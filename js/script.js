@@ -57,9 +57,27 @@ $(".activities")
             $('.activities :nth-child(9)').text("Total Cost: $" + total);
 
 
-        });
+        // });
 
+            const emDash = $(event.target).parent().text().indexOf("—");
+            const indexComma = $(event.target).parent().text().indexOf(",");
+            const workshopTime = $(event.target).parent().text().slice(emDash + 1, indexComma);
+            const checkboxes = $('[type="checkbox"]');
 
+          for (let i = 0; i < $('[type="checkbox"]').length; i++) {
+            const $textCheckbox = $('[type="checkbox"]').eq(i).parent().text();
+
+         if ($textCheckbox.includes(workshopTime) && $(event.target).parent().text() !== $textCheckbox) {
+          if ($(event.target).is(":checked")) {
+            $(checkboxes[i]).parent().css("text-decoration", "line-through");
+            $('[type="checkbox"]').eq(i).attr("disabled", true);
+        } else {
+            $(checkboxes[i]).parent().css("text-decoration", "none");
+            $('[type="checkbox"]').eq(i).attr("disabled", false);
+        }
+    }
+}
+  });
 
 
 
