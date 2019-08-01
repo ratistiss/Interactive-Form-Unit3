@@ -121,7 +121,7 @@ $('#payment').change(function () {
     }});
 
 
-var nameRegex = '/[a-z][A-Z]\w+/';
+var nameRegex = /^[A-Z\-'\s]+$/i;
 var emailRegex = '^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$'; 
 var creditCardRegex = '^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$';
 var zipRegex = '^[0-9]{5}$';
@@ -129,11 +129,19 @@ var cvvRegex = '^[0-9]{3}$';
 
 
 //Validation functions
-const validName = () => {
-    let result = '/[a-z][A-Z]\w+/'.test($("#name").val());
-
-    if (!result) {
-        invalidSpans(":Enter A Valid Name", "name");
-    }
-    return result;
-};
+// function isValidName(name) {
+//     if (name !== "" && nameRegex.test(name)) {
+//         $('#name').addClass('isValid');
+//         $('#name').removeClass('notValid');
+//         $('#nameError').hide();
+//         return nameRegex.test(name);
+//     } else if ($('#name').val() == "") {
+//         $('#name').addClass('notValid');
+//         $('#name').removeClass('isValid');
+//     } else {
+//         $('#nameError').hide();
+//         $('#name + span').show()
+//         $('#name').addClass('notValid');
+//         $('#name').removeClass('isValid');
+//     }
+// }
