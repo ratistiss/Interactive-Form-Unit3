@@ -165,7 +165,7 @@ $('.activities').on('change', function () {
     checked();
 });
 
-//CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club
+//CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club. Regex was taken from http://www.informit.com/articles/article.aspx?p=1223879&seqNum=12
 const isValidCC = () => {
     const ccNum = parseInt($('#cc-num').val());
     const card = /^(5[1-5]\d{14})|(4\d{12}(\d{3})?)|(3[47]\d{13})|(6011\d{14})|((30[0-5]|36\d|38\d)\d{11})$/.test(ccNum);
