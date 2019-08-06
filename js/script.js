@@ -186,31 +186,32 @@ const isValidCVV = () => {
 }
 
 // Credit Card Validation for number, zip code and cvv
-const cardVal = () => {
-    if (isValidCC()) {
-        $('label[for="cc-num"]').css('color', '');
-        $('#cc-num').css('border', '');
-    } else {
-        $('label[for="cc-num"]').css('color', 'red');
-        $('#cc-num').css('border', '2px solid red');
+    const cardVal = () => {
+        if (isValidCC()) {
+         $('label[for="cc-num"]').css('color', '');
+         $('#cc-num').css('border', '');
+     } else {
+         $('label[for="cc-num"]').css('color', 'red');
+         $('#cc-num').css('border', '2px solid red');
+     }
+        if (isValidZip()) {
+         $('label[for="zip"]').css('color', '');
+         $('#zip').css('border', '');
+     } else {
+         $('label[for="zip"]').css('color', 'red');
+         $('#zip').css('border', '2px solid red');
+     } 
+       if (isValidCVV()) {
+         $('label[for="cvv"]').css('color', '');
+         $('#cvv').css('border', '');
+     } else {
+         $('label[for="cvv"]').css('color', 'red');
+         $('#cvv').css('border', '2px solid red');
     }
-    if (isValidZip()) {
-        $('label[for="zip"]').css('color', '');
-        $('#zip').css('border', '');
-    } else {
-        $('label[for="zip"]').css('color', 'red');
-        $('#zip').css('border', '2px solid red');
     }
-    if (isValidCVV()) {
-        $('label[for="cvv"]').css('color', '');
-        $('#cvv').css('border', '');
-    } else {
-        $('label[for="cvv"]').css('color', 'red');
-        $('#cvv').css('border', '2px solid red');
-    }
-}
 
-// Credit card event listener for number, zip code and cvv
+
+//Credit card event listener for number, zip code and cvv
 $('#cc-num, #zip, #cvv').on('change', function () {
     cardVal();
 });
@@ -227,7 +228,7 @@ const isValidPayment = () => {
     return true;
 }
 
-// Master validation function
+// Page validation function
 const masterVal = () => {
     if (isValidName() && isValidEmail() && checked() > 0) {
         if ($('#payment :selected').val() === 'select_method') {
@@ -243,7 +244,7 @@ const masterVal = () => {
     }
 }
 
-// Master validation event listener
+// Submit Button 
 $('button').on('click', function (e) {
     if (masterVal()) {
     } else {
