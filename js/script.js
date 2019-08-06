@@ -1,7 +1,9 @@
+// Focuses on Name field when page loads
 $('#name').focus();
 
-$('#other-title').hide();
 
+//Other title input appears on selection of Other Job
+$('#other-title').hide();
 $('#title').change(function () {
     if ($(this).val() == 'other') {
         $("#other-title").show();
@@ -11,12 +13,13 @@ $('#title').change(function () {
     }
 });
 
-
-
+//Select a shirt Theme
 $('#design :nth-child(1)').hide();
 $('#color').prepend("<option>Please select a T-shirt theme</option>");
 $('#color').hide();
 
+
+//shirt options by design
 $("#design").change(function(){
      if($(this).val() == 'js puns'){
          $('#color').show();
@@ -35,9 +38,9 @@ $("#design").change(function(){
 
 
 
+//Activities Cost and selections
 const totalDiv = $('.activities').append('<label>');
 let total = "0";
-
 $(".activities")
     .find("input")
     .change(
@@ -79,7 +82,7 @@ $(".activities")
 }
   });
 
-
+//Hides payment options
 $('#payment :nth-child(1)').hide();
 $('#credit-card').hide();
 $('div p').eq(0).hide();
@@ -102,7 +105,7 @@ $('#payment').change(function () {
     }});
 
  
-// Name validation with regex
+//Name validation with regex
 const nameVal = () => {
     const isValidName = () => {
         const name = $('#name').val();
@@ -118,13 +121,13 @@ const nameVal = () => {
     }
 }
 
-// Name event listener
+//Name field  event listener
 $('#name').on('change', function () {
     nameVal();
 });
 
 
-// Email validation with regex
+//Email validation with regex
 const emailVal = () => {
     const isValidEmail = () => {
         const email = $('#mail').val();
@@ -140,12 +143,12 @@ const emailVal = () => {
     }
 }
 
-// Email event listener
+//Email field event listener
 $('#mail').on('change', function () {
     emailVal();
 });
 
-// Activities checked checker function
+//Activities checked checker function
 const checked = () => {
     const activityCount = $('.activities input:checkbox:checked').length;
     const activityLegend = $('.activities legend');
@@ -157,12 +160,12 @@ const checked = () => {
     return activityCount;
 }
 
-// Activities event listener and validation
+//Activities checkboxes event listener and validation
 $('.activities').on('change', function () {
     checked();
 });
 
-// CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club
+//CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club
 const isValidCC = () => {
     const ccNum = parseInt($('#cc-num').val());
     const card = /^(5[1-5]\d{14})|(4\d{12}(\d{3})?)|(3[47]\d{13})|(6011\d{14})|((30[0-5]|36\d|38\d)\d{11})$/.test(ccNum);
@@ -171,21 +174,21 @@ const isValidCC = () => {
     }
 }
 
-// Zip code regex 5 digits
+//Zip code regex 5 digits
 const isValidZip = () => {
     const zipCode = $('#zip').val();
     const zipCodeCheck = /(^\d{5}$)/.test(zipCode);
     return zipCodeCheck;
 }
 
-// CVV code regex for 3 digits
+//CVV code regex for 3 digits
 const isValidCVV = () => {
     const cvv = $('#cvv').val();
     const cvvCheck = /^[0-9]{3}$/.test(cvv);
     return cvvCheck;
 }
 
-// Credit Card Validation for number, zip code and cvv
+//Credit Card field Validation for number, zip code and cvv
     const cardVal = () => {
         if (isValidCC()) {
          $('label[for="cc-num"]').css('color', '');
@@ -211,12 +214,12 @@ const isValidCVV = () => {
     }
 
 
-//Credit card event listener for number, zip code and cvv
+//Credit card field event listener for number, zip code and cvv
 $('#cc-num, #zip, #cvv').on('change', function () {
     cardVal();
 });
 
-// Credit card selected function to return boolean for master validation
+//Credit card selected function to return boolean for master validation
 const isValidPayment = () => {
     const paymentVal = $('#payment :selected').text();
     if (paymentVal === '' || paymentVal === 'Credit Card') {
@@ -228,7 +231,7 @@ const isValidPayment = () => {
     return true;
 }
 
-// Page validation function
+//Page validation function
 const masterVal = () => {
     if (isValidName() && isValidEmail() && checked() > 0) {
         if ($('#payment :selected').val() === 'select_method') {
@@ -244,7 +247,7 @@ const masterVal = () => {
     }
 }
 
-// Submit Button 
+//Submit Button 
 $('button').on('click', function (e) {
     if (masterVal()) {
     } else {
