@@ -83,8 +83,8 @@ $(".activities")
   });
 
 //Hides payment options
-$('#payment :nth-child(1)').hide();
-$('#credit-card').hide();
+$('#payment :nth-child(1)').remove();
+$('#credit-card').show();
 $('div p').eq(0).hide();
 $('div p').eq(1).hide();
 
@@ -168,10 +168,8 @@ $('.activities').on('change', function () {
     $checked();
 });
 
-//default Credit card
-$('#payment :nth-child(1)').hide();
 
-//CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club. Regex was taken from http://www.informit.com/articles/article.aspx?p=1223879&seqNum=12
+//CC number regex 
 const $validCC = () => {
     const ccNum = parseInt($('#cc-num').val());
     const card = /^(\d{13,16})$/.test(ccNum);
@@ -240,9 +238,9 @@ const $payment = () => {
 //Page validation function
 const $page = () => {
     if ($validName() && $validEmail() && $checked() > 0) {
-        if ($('#payment :selected').val() === 'select_method') {
+        if ($('#payment :selected').val() === '') {
             return false;
-            if ($('#payment :selected').val() === 'credit card') {
+         } else if ($('#payment :selected').val() === 'credit card') {
                 if ($payment()) {
                     return true;
                 }
@@ -251,16 +249,13 @@ const $page = () => {
             return true;
         }
     }
-}
+
 
 //Submit Button 
 $('button').on('click', function (e) {
     if ($page()) {
     } else {
         e.preventDefault();
-        $name();
-        $email();
-        $checked();
-        $card();
+       $page();
         alert('Please fill out all fields.');
     }});
