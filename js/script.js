@@ -162,7 +162,7 @@ const $checked = () => {
 
 //Activities checkboxes event listener and validation
 $('.activities').on('change', function () {
-    checked();
+    $checked();
 });
 
 //CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club. Regex was taken from http://www.informit.com/articles/article.aspx?p=1223879&seqNum=12
