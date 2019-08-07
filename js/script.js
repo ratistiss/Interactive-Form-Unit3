@@ -106,12 +106,13 @@ $('#payment').change(function () {
 
  
 //Name validation with regex
-const $name = () => {
     const $validName = () => {
         const name = $('#name').val();
         const nameCheck = /^[a-zA-Z ]+$/.test(name);
         return nameCheck;
     }
+
+    const $name = () => {
     if ($validName() === true) {
         $('label[for="name"]').css('color', '');
         $('#name').css('border', '');
@@ -128,20 +129,22 @@ $('#name').on('change', function () {
 
 
 //Email validation with regex
-const $email = () => {
     const $validEmail = () => {
         const email = $('#mail').val();
         const emailCheck = /^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$/i.test(email);
         return emailCheck;
     }
+
+const $email = () => {
     if ($validEmail()) {
         $('label[for="mail"]').css('color', '');
         $('#mail').css('border', '');
     } else {
         $('label[for="mail"]').css('color', 'red');
         $('#mail').css('border', '2px solid red');
-    }
-}
+    }}
+
+  
 
 //Email field event listener
 $('#mail').on('change', function () {
@@ -168,7 +171,7 @@ $('.activities').on('change', function () {
 //CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club. Regex was taken from http://www.informit.com/articles/article.aspx?p=1223879&seqNum=12
 const $validCC = () => {
     const ccNum = parseInt($('#cc-num').val());
-    const card = /^(5[1-5]\d{14})|(4\d{12}(\d{3})?)|(3[47]\d{13})|(6011\d{14})|((30[0-5]|36\d|38\d)\d{11})$/.test(ccNum);
+    const card = /^(\d{13,16})$/.test(ccNum);
     if (card) {
         return true;
     }
