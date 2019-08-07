@@ -168,6 +168,9 @@ $('.activities').on('change', function () {
     $checked();
 });
 
+//default Credit card
+$('#payment :nth-child(1)').hide();
+
 //CC number regex for Mastercard's, Visa's, Amex, Discover, and Diner's Club. Regex was taken from http://www.informit.com/articles/article.aspx?p=1223879&seqNum=12
 const $validCC = () => {
     const ccNum = parseInt($('#cc-num').val());
