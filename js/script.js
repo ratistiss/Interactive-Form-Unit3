@@ -256,6 +256,9 @@ $('button').on('click', function (e) {
     if ($page()) {
     } else {
         e.preventDefault();
-       $page();
-        alert('Please fill out all fields.');
+       $name();
+       $email();
+       $checked();
+       $card();
+        alert('Please fill out all fields highlighted in Red.');
     }});
